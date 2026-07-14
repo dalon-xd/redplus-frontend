@@ -150,8 +150,20 @@ function ChatWidget({ user }) {
             <div key={username} className={`chat-window ${isMin ? 'minimized' : ''}`}>
               <div className="chat-window-header" onClick={e => toggleMin(username, e)}>
                 <div className="chat-window-user">
-                  <div className="chat-window-avatar" style={{ background: c.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
-                    {c.avatar?.length === 1 ? c.avatar : <img src={c.avatar || 'https://via.placeholder.com/40'} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />}
+                  <div className="chat-window-avatar" style={{ 
+                    background: c.avatar && c.avatar.length > 1 ? 'transparent' : '#2563eb',
+                    color: 'white',
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    borderRadius: '50%',
+                    fontWeight: 'bold'
+                  }}>
+                    {c.avatar && c.avatar.length > 1 ? (
+                      <img src={c.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                    ) : (
+                      c.username.charAt(0).toUpperCase()
+                    )}
                   </div>
                   <h5 className="chat-window-name">
                     u/{c.username}
@@ -209,8 +221,20 @@ function ChatWidget({ user }) {
               contacts.map(c => (
                 <div key={c.username} className="chat-contact-item" onClick={() => openChat(c.username)}>
                   <div className="chat-avatar-wrapper">
-                    <div className="chat-avatar" style={{ background: c.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
-                      {c.avatar?.length === 1 ? c.avatar : <img src={c.avatar || 'https://via.placeholder.com/40'} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />}
+                    <div className="chat-avatar" style={{ 
+                      background: c.avatar && c.avatar.length > 1 ? 'transparent' : '#2563eb',
+                      color: 'white',
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      borderRadius: '50%',
+                      fontWeight: 'bold'
+                    }}>
+                      {c.avatar && c.avatar.length > 1 ? (
+                        <img src={c.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                      ) : (
+                        c.username.charAt(0).toUpperCase()
+                      )}
                     </div>
                     <span className="status-dot online" />
                     </div>
