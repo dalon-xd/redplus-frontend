@@ -1,5 +1,4 @@
-const API_BASE = '/api';
-
+const API_BASE = 'https://redplus-backend-grupo-6-b6c5ftbsgbfmgubr.canadacentral-01.azurewebsites.net/api';
 // --- BASE DE DATOS LOCAL DE RESPALDO (localStorage) ---
 // Se activa automáticamente si el backend no está iniciado o es inalcanzable.
 const localDb = {
