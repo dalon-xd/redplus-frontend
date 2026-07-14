@@ -158,13 +158,13 @@ function Messages({ user }) {
                 className={`contact-item ${activeContact?.username === c.username ? 'active' : ''}`}
                 onClick={() => setActiveContact(c)}
               >
-                <div className="contact-avatar-col" style={{ background: c.avatar.length === 1 ? '#2563eb' : 'transparent' }}>
-                  {c.avatar.length === 1 ? c.avatar : <img src={c.avatar} alt="avatar" />}
+                <div className="contact-avatar-col" style={{ background: c.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
+                  {c.avatar?.length === 1 ? c.avatar : <img src={c.avatar || 'https://via.placeholder.com/40'} alt="avatar" />}
                 </div>
                 <div className="contact-info-col">
                   <span className="contact-name">u/{c.username}</span>
                   <span className="contact-status-text">
-                    {c.bio.length > 35 ? c.bio.substring(0, 35) + '...' : c.bio}
+                    {c.bio?.length > 35 ? c.bio.substring(0, 35) + '...' : (c.bio || 'Sin biografía')}
                   </span>
                 </div>
               </div>
@@ -180,8 +180,8 @@ function Messages({ user }) {
         {activeContact ? (
           <>
             <div className="chat-panel-header">
-              <div className="chat-header-avatar" style={{ background: activeContact.avatar.length === 1 ? '#2563eb' : 'transparent' }}>
-                {activeContact.avatar.length === 1 ? activeContact.avatar : <img src={activeContact.avatar} alt="avatar" />}
+              <div className="chat-header-avatar" style={{ background: activeContact.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
+                {activeContact.avatar?.length === 1 ? activeContact.avatar : <img src={activeContact.avatar || 'https://via.placeholder.com/40'} alt="avatar" />}
               </div>
               <div className="chat-header-info">
                 <h4>u/{activeContact.username}</h4>
@@ -262,8 +262,8 @@ function Messages({ user }) {
       {activeContact && (
         <div className="messenger-details-panel">
           <div className="details-panel-card">
-            <div className="details-avatar" style={{ background: activeContact.avatar.length === 1 ? '#2563eb' : 'transparent' }}>
-              {activeContact.avatar.length === 1 ? activeContact.avatar : <img src={activeContact.avatar} alt="avatar" />}
+            <div className="details-avatar" style={{ background: activeContact.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
+              {activeContact.avatar?.length === 1 ? activeContact.avatar : <img src={activeContact.avatar || 'https://via.placeholder.com/40'} alt="avatar" />}
             </div>
             <h4>u/{activeContact.username}</h4>
             <span className="details-badge">Estudiante / Miembro</span>
