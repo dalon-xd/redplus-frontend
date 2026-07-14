@@ -150,8 +150,8 @@ function ChatWidget({ user }) {
             <div key={username} className={`chat-window ${isMin ? 'minimized' : ''}`}>
               <div className="chat-window-header" onClick={e => toggleMin(username, e)}>
                 <div className="chat-window-user">
-                  <div className="chat-window-avatar" style={{ background: c.avatar.length === 1 ? '#2563eb' : 'transparent' }}>
-                    {c.avatar.length === 1 ? c.avatar : <img src={c.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />}
+                  <div className="chat-window-avatar" style={{ background: c.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
+                    {c.avatar?.length === 1 ? c.avatar : <img src={c.avatar || 'https://via.placeholder.com/40'} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />}
                   </div>
                   <h5 className="chat-window-name">
                     u/{c.username}
@@ -209,14 +209,14 @@ function ChatWidget({ user }) {
               contacts.map(c => (
                 <div key={c.username} className="chat-contact-item" onClick={() => openChat(c.username)}>
                   <div className="chat-avatar-wrapper">
-                    <div className="chat-avatar" style={{ background: c.avatar.length === 1 ? '#2563eb' : 'transparent' }}>
-                      {c.avatar.length === 1 ? c.avatar : <img src={c.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />}
+                    <div className="chat-avatar" style={{ background: c.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
+                      {c.avatar?.length === 1 ? c.avatar : <img src={c.avatar || 'https://via.placeholder.com/40'} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />}
                     </div>
                     <span className="status-dot online" />
-                  </div>
-                  <div className="chat-contact-info">
+                    </div>
+                    <div className="chat-contact-info">
                     <h5 className="chat-contact-name">u/{c.username}</h5>
-                    <p className="chat-contact-status">{c.bio.length > 30 ? c.bio.substring(0, 30) + '...' : c.bio}</p>
+                    <p className="chat-contact-status">{c.bio?.length > 30 ? c.bio.substring(0, 30) + '...' : (c.bio || 'Sin biografía')}</p>
                   </div>
                   {(unread[c.username] > 0) && <span className="chat-badge">{unread[c.username]}</span>}
                 </div>
