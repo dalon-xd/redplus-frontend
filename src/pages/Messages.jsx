@@ -158,8 +158,20 @@ function Messages({ user }) {
                 className={`contact-item ${activeContact?.username === c.username ? 'active' : ''}`}
                 onClick={() => setActiveContact(c)}
               >
-                <div className="contact-avatar-col" style={{ background: c.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
-                  {c.avatar?.length === 1 ? c.avatar : <img src={c.avatar || 'https://via.placeholder.com/40'} alt="avatar" />}
+                <div className="contact-avatar-col" style={{ 
+                  background: c.avatar && c.avatar.length > 1 ? 'transparent' : '#2563eb',
+                  color: 'white',
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                  fontWeight: 'bold'
+                }}>
+                  {c.avatar && c.avatar.length > 1 ? (
+                    <img src={c.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                  ) : (
+                    c.username.charAt(0).toUpperCase()
+                  )}
                 </div>
                 <div className="contact-info-col">
                   <span className="contact-name">u/{c.username}</span>
@@ -180,8 +192,20 @@ function Messages({ user }) {
         {activeContact ? (
           <>
             <div className="chat-panel-header">
-              <div className="chat-header-avatar" style={{ background: activeContact.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
-                {activeContact.avatar?.length === 1 ? activeContact.avatar : <img src={activeContact.avatar || 'https://via.placeholder.com/40'} alt="avatar" />}
+              <div className="chat-header-avatar" style={{ 
+                background: activeContact.avatar && activeContact.avatar.length > 1 ? 'transparent' : '#2563eb',
+                color: 'white',
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                borderRadius: '50%',
+                fontWeight: 'bold'
+              }}>
+                {activeContact.avatar && activeContact.avatar.length > 1 ? (
+                  <img src={activeContact.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                ) : (
+                  activeContact.username.charAt(0).toUpperCase()
+                )}
               </div>
               <div className="chat-header-info">
                 <h4>u/{activeContact.username}</h4>
@@ -262,8 +286,20 @@ function Messages({ user }) {
       {activeContact && (
         <div className="messenger-details-panel">
           <div className="details-panel-card">
-            <div className="details-avatar" style={{ background: activeContact.avatar?.length === 1 ? '#2563eb' : 'transparent' }}>
-              {activeContact.avatar?.length === 1 ? activeContact.avatar : <img src={activeContact.avatar || 'https://via.placeholder.com/40'} alt="avatar" />}
+            <div className="details-avatar" style={{ 
+              background: activeContact.avatar && activeContact.avatar.length > 1 ? 'transparent' : '#2563eb',
+              color: 'white',
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              borderRadius: '50%',
+              fontWeight: 'bold'
+            }}>
+              {activeContact.avatar && activeContact.avatar.length > 1 ? (
+                <img src={activeContact.avatar} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+              ) : (
+                activeContact.username.charAt(0).toUpperCase()
+              )}
             </div>
             <h4>u/{activeContact.username}</h4>
             <span className="details-badge">Estudiante / Miembro</span>
